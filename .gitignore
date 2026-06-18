@@ -1,0 +1,10 @@
+*.mp4
+**/__pycache__/** 
+**.egg-info/
+build/
+**.cpython-37.pyc
+**.pyc
+
+../figures/
+../media/
+../evaluations/

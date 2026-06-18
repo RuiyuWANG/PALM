@@ -1,0 +1,41 @@
+{   
+    "dataset":{
+        "robot": "panda",
+        "save_path": "../data/insert_peg",
+        "tasks": "insert_onto_single_square_peg_simple",
+        "image_size": [512, 512],
+        "renderer": "opengl",
+        "processes": 1,
+        "episodes_per_task": 300,
+        "variations": -1,
+        "headless": true,
+        "seed": 10000
+    },
+    
+    "conversion":{
+      "obs":{
+          "rgb":["front_rgb", "wrist_rgb"],
+          "mask":[],
+          "low_dim":["gripper_matrix",
+                      "gripper_open",
+                      "front_camera_extrinsics",
+                      "front_camera_intrinsics",
+                      "joint_positions"]
+        },
+
+        "ops":{
+          "rgb":["overlay_tcp_crop"],
+          "mask":[],
+          "low_dim":[]
+        },
+        "eef_correction": null,
+        "overwrite_max_n_values": 1,
+
+        "tcp_crop_size": [160, 160],
+        "tcp_height_offset": 40,
+        "jitter_crop": 5,
+
+        "img_size": [84, 84],
+        "train_split_ratio": 0.9
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "RGB_OPS": [
+      "tcp_crop",
+      "overlay",
+      "overlay_tcp_crop",
+      "overlay_center_crop",
+      "object_crop",
+      "overlay_object_crop"
+    ],
+    "LABEL_OPS":[
+      "6d_xyz", 
+      "rotvec_xyz",
+      "rotvec_xyz_scaled"
+    ],
+    "LOW_DIM_OPS": [
+      "6d_xyz",
+      "6d_z",
+      "6d_xyz_in_cam",
+      "6d_z_in_cam",
+      "6d_in_cam_xyz",
+      "6d_in_cam_z",
+      "9d_xyz_in_cam",
+      "9d_xyz",
+      "9d_z",
+      "6d_z_centered",
+      "6d_xyz_centered",
+      "6d_centered_xyz",
+      "6d_centered_z",
+      "z_only"
+    ],
+    "HOME_X": [
+      [-1, 0, 0, 0.2],
+      [0, 1, 0, 0],
+      [0, 0, -1, 1.2],
+      [0, 0, 0, 1]
+    ],
+    
+    "WORKSPACE_X" :[
+      [1.0, 0.0, 0.0, 0.25],
+      [0.0, 1.0, 0.0, 0.0],
+      [0.0,0.0, 1.0, 0.75199986],
+      [0.0,0.0, 0.0, 1.0]
+    ]
+    
+  }

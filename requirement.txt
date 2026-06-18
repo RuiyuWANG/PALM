@@ -1,0 +1,17 @@
+colorama
+easydict
+einops
+h5py
+imageio
+kornia
+matplotlib
+numpy
+palettable
+Pillow
+rich
+scipy
+tabulate
+tensorboard
+torch
+torchvision
+tqdm

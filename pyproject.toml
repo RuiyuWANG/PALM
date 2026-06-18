@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "palm"
+version = "0.1.0"
+description = "Perception Alignment for Localized Manipulation"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  {name = "Ruiyu Wang"},
+  {name = "Zheyu Zhuang"},
+]
+dependencies = [
+  "colorama",
+  "easydict",
+  "einops",
+  "h5py",
+  "imageio",
+  "kornia",
+  "matplotlib",
+  "numpy",
+  "palettable",
+  "Pillow",
+  "rich",
+  "scipy",
+  "tabulate",
+  "tensorboard",
+  "torch",
+  "torchvision",
+  "tqdm",
+]
+
+[project.scripts]
+palm-collect = "palm.data.collection:main"
+palm-train = "palm.training.trainer:main"
+palm-eval = "palm.evaluation.rollout:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["palm*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+palm = ["configs/**/*.json"]

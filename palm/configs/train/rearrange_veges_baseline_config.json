@@ -1,0 +1,110 @@
+{
+    "dataset": {
+        "task_name": "rearrange_veges",
+        "dataset_path": "../data/rearrange_veges/rearrange_veges/variation0/data.h5",
+        "obs": {
+            "rgb": ["front_rgb"],
+            "mask": [],
+            "low_dim": ["eef_6d_xyz", "gripper_open_binary"]
+        },
+        "actions": ["delta_6d_xyz", "gripper_action"],
+        "n_steps_ahead": 1,
+        "background_dir": "../data/backgrounds"
+    },
+    "train": {
+        "experiment": "rearrange_veges/baseline",
+        "experiment_dir": "../experiments/",
+        "load_checkpoint": null,
+        "batch_size": 64,
+        "num_workers": 8,
+        "num_epochs": 600,
+        "optimizer": {
+            "type": "adam",
+            "lr": 1e-4,
+            "weight_decay": 0.0,
+            "encoder_finetune_scale": 0.1
+        },
+        "loss": {
+            "type": "l2",
+            "weight": 1.0
+        },
+        "clip_grad_norm": 20,
+        "save_interval": 50,
+        "log_interval": 10,
+        "keep_top_k": 5,
+        "keep_last_k": 5,
+        "reset_hparams": false,
+        "seed": 42,
+        "eval": {
+            "enabled": true,
+            "horizon": 250,
+            "num_rollouts": 50,
+            "headless": false,
+            "ood": false,
+            "camera_mode": null,
+            "robot": "panda"
+        }
+    },
+    "network": {
+        "encoder": {
+            "type": "resnet18",
+            "pretrained": true,
+            "coord_conv": true,
+            "pooling": {
+                "type": "avg",
+                "in_dim": 512,
+                "out_dim": 64
+            }
+        },
+        "mlp": {
+            "hidden_dims": [1024, 1024],
+            "activation": "relu"
+        },
+        "crop_randomizer": {
+            "input_size": [84, 84],
+            "crop_size": [76, 76],
+            "crop_ratio": null,
+            "resize": false,
+            "shuffle_crop_size": false,
+            "return_indices": true
+        },
+        "random_overlay": {
+            "enabled": false,
+            "p": 0.5,
+            "blend_alpha": 0.5,
+            "augment_ood": true,
+            "warmup": 10,
+            "input_size": [84, 84],
+            "background_dir": "../data/backgrounds"
+        },
+        "robo_augmentor": {
+            "__usage__": [
+                "Mirroring: mirror images, transforms actions and eef proprio-states accordingly",
+                "Flipping: rotate the eef proprio-state along the z-axis 180 degrees, transforms actions accordingly",
+                "Perspective: image only, change the perspective of the image"
+            ],
+            "input_size": [84, 84],
+            "prob": 0.0,
+            "warmup": 0,
+            "perspective": false,
+            "erase": false,
+            "zoom": false,
+            "debug": false,
+            "debug_dir": null
+        },
+        "normalizer": {
+            "rgb": "imagenet",
+            "mask": null,
+            "low_dim": "normalize",
+            "actions": "normalize",
+            "low_dim_noise": 0.005,
+            "dataset_path": null
+        },
+        "obs": null,
+        "actions": null,
+        "img_size": null,
+        "action_shape": null,
+        "low_dim_shape": null,
+        "n_steps_ahead": null
+    }
+}
